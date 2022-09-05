@@ -13,7 +13,7 @@ export class AuthService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this._isLoggedIn$.asObservable();
 
-  constructor( public router: Router) {
+  constructor(public router: Router) {
     let accessToken = localStorage.getItem("accessToken");
     this._isLoggedIn$.next(!!accessToken);
   }
@@ -24,6 +24,7 @@ export class AuthService {
       .then(res => {
         console.log(res);
         this.setSession(res.data.body);
+        return res.data;
       }).catch(err => {
         console.log(err);
       }
@@ -41,7 +42,7 @@ export class AuthService {
 
     console.log(authResult);
 
-    console.log("accessToken",authResult.accessToken);
+    console.log("accessToken", authResult.accessToken);
 
     const expiresAt = moment().add(authResult.expiresAt, 'second');
     const refreshExpiresAt = moment().add(authResult.refreshExpiresAt, 'second');
@@ -51,7 +52,7 @@ export class AuthService {
 
     localStorage.setItem('refreshToken', authResult.refreshToken);
     localStorage.setItem("refreshExpiresAt", JSON.stringify(refreshExpiresAt.valueOf()));
-    this.router.navigateByUrl('/');
+
 
   }
 
@@ -61,6 +62,7 @@ export class AuthService {
 
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("refreshExpiresAt");
+    this._isLoggedIn$ = new BehaviorSubject<boolean>(false);
   }
 
   public isLoggedIn() {
