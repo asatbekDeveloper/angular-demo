@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiClient } from "../api/repository/country-api";
+import { CountryApi } from "../api/repository/country-api";
+import { auithCredential } from '../login/login.component';
 
 interface Country {
   id: number;
@@ -15,16 +16,19 @@ interface Country {
 
 export class CountryComponent implements OnInit {
 
-  countries: Country[] = []
-  constructor(private apiClient: ApiClient) {
+  countries: Country[] = [];
+  auithCredential=auithCredential;
+
+  constructor(private countryApi: CountryApi) {
 
   }
 
   ngOnInit(): void {
-    this.apiClient.getAll()
+    this.countryApi.getAll()
       .then(res => {
-        console.log(res);
+        console.log("countries: ",this.countries);
         this.countries = res;
+        console.log("auithCredential",auithCredential);
       });
   }
 

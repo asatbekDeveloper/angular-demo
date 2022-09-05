@@ -6,7 +6,7 @@ import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: "root"
 })
-export class ApiClient {
+export class CountryApi {
 
 
   baseUrl: string = "http://localhost:6060/api/v1/country";

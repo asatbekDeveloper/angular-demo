@@ -8,6 +8,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CountryComponent } from './country/country.component';
 import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,11 +17,14 @@ import { AuthComponent } from './auth/auth.component';
     NavbarComponent,
     CountryComponent,
     HomeComponent,
-    AuthComponent
+    AuthComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
