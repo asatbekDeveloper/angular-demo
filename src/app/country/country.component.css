@@ -1,0 +1,25 @@
+.country {
+  padding-top: 2rem
+}
+
+.th-country {
+  border-bottom: 2px solid #f00;
+}
+
+.thead-country {
+  background-color: #04C3FC;
+}
+
+.thead-bottom-country {
+  background-color: #08A51F;
+  border-top-color: red;
+}
+
+.tr-country {
+  padding: 2rem;
+}
+
+.th-bottom-country {
+  border-top: 2px solid #f00;
+  padding: 1.26rem;
+}
