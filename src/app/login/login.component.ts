@@ -10,7 +10,6 @@ interface UserCredentials{
   refreshExpiresAt: string;
 }
 
-export let authCredential={};
 
 @Component({
   selector: 'app-login',
@@ -22,12 +21,6 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  userCredential: UserCredentials={
-    accessToken: 0,
-    expiresAt: '',
-    refreshToken: '',
-    refreshExpiresAt: ''
-  };
 
   ngOnInit(): void {
   }
@@ -46,17 +39,7 @@ export class LoginComponent implements OnInit {
 
     if (val.username && val.password) {
       console.log("Username: ",val.username," Password: ",val.password);
-      this.authService.login(val.username, val.password)
-        .then(
-          (res) => {
-            console.log("login: ", res);
-            this.userCredential=res.body;
-            authCredential=res.body;
-            console.log("userCredential",this.userCredential);
-            console.log("authCredential",authCredential);
-            this.router.navigateByUrl('/');
-          }
-        );
+      this.authService.login(val.username, val.password);
     }
   }
 

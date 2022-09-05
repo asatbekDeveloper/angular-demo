@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
 import axios from "axios";
+import { BehaviorSubject } from 'rxjs';
 import * as moment from "moment";
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -8,7 +10,12 @@ import * as moment from "moment";
 })
 export class AuthService {
 
-  constructor() {
+  private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this._isLoggedIn$.asObservable();
+
+  constructor( public router: Router) {
+    let accessToken = localStorage.getItem("accessToken");
+    this._isLoggedIn$.next(!!accessToken);
   }
 
   async login(username: string, password: string) {
@@ -16,10 +23,7 @@ export class AuthService {
     return axios.post('http://localhost:9595/login', { username, password })
       .then(res => {
         console.log(res);
-        console.log("Set Session Start");
         this.setSession(res.data.body);
-        console.log("Set Session End");
-        return res.data;
       }).catch(err => {
         console.log(err);
       }
@@ -47,8 +51,7 @@ export class AuthService {
 
     localStorage.setItem('refreshToken', authResult.refreshToken);
     localStorage.setItem("refreshExpiresAt", JSON.stringify(refreshExpiresAt.valueOf()));
-  
-
+    this.router.navigateByUrl('/');
   }
 
   logout() {
@@ -62,6 +65,7 @@ export class AuthService {
   public isLoggedIn() {
     return moment().isBefore(this.getExpiration());
   }
+
 
   isLoggedOut() {
     return !this.isLoggedIn();
