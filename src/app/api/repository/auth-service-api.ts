@@ -52,6 +52,7 @@ export class AuthService {
     localStorage.setItem('refreshToken', authResult.refreshToken);
     localStorage.setItem("refreshExpiresAt", JSON.stringify(refreshExpiresAt.valueOf()));
     this.router.navigateByUrl('/');
+
   }
 
   logout() {

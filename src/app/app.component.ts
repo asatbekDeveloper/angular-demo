@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from './api/repository/auth-service-api';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +7,4 @@ import { AuthService } from './api/repository/auth-service-api';
 })
 export class AppComponent {
   title = 'demo-app';
-
-  public showMenu: boolean = false;
-
-  constructor(public authService: AuthService) { }
-
-  ngOnInit(): void {
-  }
 }
