@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Injectable } from "@angular/core";
-
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -8,22 +8,27 @@ import { Injectable } from "@angular/core";
 })
 export class CountryApi {
 
+  baseUrl: string = "http://localhost:9595/v1/key_word_base/country_base_server";
 
-  baseUrl: string = "http://localhost:6060/api/v1/country";
 
-
-  constructor(){
-
+  constructor(private router: Router) {
   }
 
-  getAll(){
-    return axios.get(this.baseUrl)
-    .then(res=>{
+  async getAll() {
+
+    let accessToken = localStorage.getItem("accessToken");
+
+    try {
+      const res = await axios.get(this.baseUrl,
+        {
+          headers: { "Authorization": `Bearer ${accessToken}` }
+        });
       console.log(res);
       return res.data;
-    }).catch(err=>{
+    } catch (err) {
       console.log(err);
-    })
+    }
   }
+
 
 }

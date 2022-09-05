@@ -10,7 +10,7 @@ interface UserCredentials{
   refreshExpiresAt: string;
 }
 
-export let auithCredential={};
+export let authCredential={};
 
 @Component({
   selector: 'app-login',
@@ -51,9 +51,9 @@ export class LoginComponent implements OnInit {
           (res) => {
             console.log("login: ", res);
             this.userCredential=res.body;
-            auithCredential=res.body;
+            authCredential=res.body;
             console.log("userCredential",this.userCredential);
-            console.log("auithCredential",auithCredential);
+            console.log("authCredential",authCredential);
             this.router.navigateByUrl('/');
           }
         );

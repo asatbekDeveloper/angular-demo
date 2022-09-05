@@ -16,7 +16,9 @@ export class AuthService {
     return axios.post('http://localhost:9595/login', { username, password })
       .then(res => {
         console.log(res);
-        this.setSession(res.data);
+        console.log("Set Session Start");
+        this.setSession(res.data.body);
+        console.log("Set Session End");
         return res.data;
       }).catch(err => {
         console.log(err);
@@ -35,14 +37,17 @@ export class AuthService {
 
     console.log(authResult);
 
+    console.log("accessToken",authResult.accessToken);
+
     const expiresAt = moment().add(authResult.expiresAt, 'second');
     const refreshExpiresAt = moment().add(authResult.refreshExpiresAt, 'second');
 
-    localStorage.setItem('accessToken', JSON.stringify(authResult.accessToken));
+    localStorage.setItem('accessToken', authResult.accessToken);
     localStorage.setItem("expiresAt", JSON.stringify(expiresAt.valueOf()));
 
-    localStorage.setItem('refreshToken', JSON.stringify(authResult.refreshToken));
+    localStorage.setItem('refreshToken', authResult.refreshToken);
     localStorage.setItem("refreshExpiresAt", JSON.stringify(refreshExpiresAt.valueOf()));
+  
 
   }
 
