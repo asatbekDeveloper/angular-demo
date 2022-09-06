@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Injectable } from "@angular/core";
-import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -10,8 +9,7 @@ export class CountryApi {
 
   baseUrl: string = "http://localhost:9595/v1/key_word_base/country_base_server";
 
-
-  constructor(private router: Router) {
+  constructor() {
   }
 
   async getAll() {

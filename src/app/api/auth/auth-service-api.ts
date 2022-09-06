@@ -62,7 +62,7 @@ export class AuthService {
 
     localStorage.removeItem("refreshToken");
     localStorage.removeItem("refreshExpiresAt");
-    this._isLoggedIn$ = new BehaviorSubject<boolean>(false);
+
   }
 
   public isLoggedIn() {

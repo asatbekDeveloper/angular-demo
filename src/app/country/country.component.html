@@ -1,8 +1,7 @@
 <div class="container country">
   <div class="row">
     <div class="col-md-12">
-
-      <table  class="table table-bordered table-striped">
+      <table class="table table-bordered table-striped">
         <thead class="thead-country">
           <tr>
             <th scope="col" class="th-country">#</th>
@@ -10,25 +9,21 @@
             <th scope="col" class="th-country">Code</th>
           </tr>
         </thead>
-        <tbody >
-
-            <tr *ngFor="let country of countries">
-              <th scope="row">{{country.id}}</th>
-              <td>{{country.name}}</td>
-              <td>{{country.code}}</td>
-            </tr>
-
+        <tbody>
+          <tr *ngFor="let country of countries; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ country.name }}</td>
+            <td>{{ country.code }}</td>
+          </tr>
         </tbody>
         <thead class="thead-bottom-country">
           <tr class="tr-country">
-              <th scope="col" class="th-bottom-country"></th>
-              <th scope="col" class="th-bottom-country"></th>
-              <th scope="col" class="th-bottom-country"></th>
+            <th scope="col" class="th-bottom-country"></th>
+            <th scope="col" class="th-bottom-country"></th>
+            <th scope="col" class="th-bottom-country"></th>
           </tr>
-          </thead>
+        </thead>
       </table>
-
-
     </div>
   </div>
 </div>

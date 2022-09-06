@@ -9,6 +9,9 @@ import { CountryComponent } from './country/country.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FinancialYearComponent } from './financial-year/financial-year.component';
+import { FinancialYearCreateComponent } from './financial-year/components/financial-year-create/financial-year-create.component';
+import { FinancialYearUpdateComponent } from './financial-year/components/financial-year-update/financial-year-update.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     CountryComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    FinancialYearComponent,
+    FinancialYearCreateComponent,
+    FinancialYearUpdateComponent
   ],
   imports: [
     BrowserModule,

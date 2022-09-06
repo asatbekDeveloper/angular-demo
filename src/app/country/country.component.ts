@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CountryApi } from "../api/repository/country-api";
+import { CountryApi } from "../api/country/country-api";
 
 interface Country {
   id: number;

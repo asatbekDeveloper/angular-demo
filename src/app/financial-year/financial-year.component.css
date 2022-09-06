@@ -1,0 +1,25 @@
+.financial {
+  padding-top: 2rem
+}
+
+.th-financial {
+  border-bottom: 2px solid #f00;
+}
+
+.thead-financial {
+  background-color: #04C3FC;
+}
+
+.thead-bottom-financial {
+  background-color: #08A51F;
+  border-top-color: red;
+}
+
+.tr-financial {
+  padding: 2rem;
+}
+
+.th-bottom-financial {
+  border-top: 2px solid #f00;
+  padding: 1.26rem;
+}

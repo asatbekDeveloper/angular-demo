@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../api/repository/auth-service-api';
+import { AuthService } from '../api/auth/auth-service-api';
 
 
 @Component({
@@ -28,16 +28,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+
     const val = this.loginForm.value;
 
     if (val.username && val.password) {
       console.log("Username: ", val.username, " Password: ", val.password);
       this.authService.login(val.username, val.password)
         .then(res => {
-          console.log(res.body);
-          this.router.navigateByUrl('/login');
+          console.log("response: ",res.body);
+          // this.router.navigateByUrl('/');
+          this.router.navigate(['/']);
         }).catch(err => {
           console.log(err);
+          this.router.navigateByUrl('/login');
         });
     }
   }
