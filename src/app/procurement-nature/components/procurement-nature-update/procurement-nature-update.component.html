@@ -1,0 +1,20 @@
+<div class="container procurement">
+  <div class="row">
+      <div class="col-md-6 offset-3">
+          <form [formGroup]="procurementNatureUpdateForm" (ngSubmit)="update()">
+              <div class="form-group">
+                  <label for="name">Name</label>
+                  <input id="name"
+                  type="text"
+                  name="name"
+                  formControlName="name"
+                  [(ngModel)]="procurementNature.name"
+                  class="form-control"
+                         placeholder="Enter procurement nature"/>
+              </div>
+              <button type="submit" class="btn btn-primary btn-sm" ><i class="fa fa-save"></i> Save</button>
+          </form>
+      </div>
+  </div>
+</div>
+

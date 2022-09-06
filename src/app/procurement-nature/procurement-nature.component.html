@@ -1,48 +1,45 @@
-<div class="container financial">
+<div class="container procurement">
   <div class="row">
     <div class="col-md-12">
       <h4>
-        <a class="btn btn-primary btn-sm" routerLink="/financial-year/create">
+        <a class="btn btn-primary btn-sm" routerLink="/procurement-nature/create">
           <i class="fa fa-plus"></i> Add</a
         >
       </h4>
       <br />
       <table *ngIf="!isLoading" class="table table-bordered table-striped">
-        <thead class="thead-financial">
+        <thead class="thead-procurement">
           <tr>
-            <th scope="col" class="th-financial">#</th>
-            <th scope="col" class="th-financial">Name</th>
-            <th scope="col" class="th-financial">Is Default</th>
-            <th scope="col" colspan="2" class="th-financial">Settings</th>
+            <th scope="col" class="th-procurement">#</th>
+            <th scope="col" class="th-procurement">Name</th>
+            <th scope="col" colspan="2" class="th-procurement">Settings</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let financial of financialYears; let i = index">
+          <tr *ngFor="let procurement of procurementNatures; let i = index">
             <th scope="row">{{ i + 1 }}</th>
-            <td>{{ financial.year }}</td>
-            <td>{{ financial.default }}</td>
+            <td>{{ procurement.name }}</td>
             <td>
               <a
                 class="btn btn-outline-info btn-sm"
-                [routerLink]="['/financial-year/update/', financial.id]"
+                [routerLink]="['/procurement-nature/update/', procurement.id]"
                 ><i class="fa fa-edit"></i
               ></a>
             </td>
             <td>
               <a
                 class="btn btn-outline-danger btn-sm"
-                (click)="delete(financial.id)"
+                (click)="delete(procurement.id)"
                 ><i class="fa fa-trash"></i
               ></a>
             </td>
           </tr>
         </tbody>
-        <thead class="thead-bottom-financial">
-          <tr class="tr-financial">
-            <th scope="col" class="th-bottom-financial"></th>
-            <th scope="col" class="th-bottom-financial"></th>
-            <th scope="col" class="th-bottom-financial"></th>
-            <th scope="col" colspan="2" class="th-bottom-financial"></th>
+        <thead class="thead-bottom-procurement">
+          <tr class="tr-procurement">
+            <th scope="col" class="th-bottom-procurement"></th>
+            <th scope="col" class="th-bottom-procurement"></th>
+            <th scope="col" colspan="2" class="th-bottom-procurement"></th>
           </tr>
         </thead>
       </table>

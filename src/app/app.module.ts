@@ -15,6 +15,9 @@ import { FinancialYearUpdateComponent } from './financial-year/components/financ
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ProcurementNatureComponent } from './procurement-nature/procurement-nature.component';
+import { ProcurementNatureCreateComponent } from './procurement-nature/components/procurement-nature-create/procurement-nature-create.component';
+import { ProcurementNatureUpdateComponent } from './procurement-nature/components/procurement-nature-update/procurement-nature-update.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     LoginComponent,
     FinancialYearComponent,
     FinancialYearCreateComponent,
-    FinancialYearUpdateComponent
+    FinancialYearUpdateComponent,
+    ProcurementNatureComponent,
+    ProcurementNatureCreateComponent,
+    ProcurementNatureUpdateComponent
   ],
   imports: [
     BrowserModule,

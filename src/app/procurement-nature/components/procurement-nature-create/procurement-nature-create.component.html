@@ -1,0 +1,22 @@
+<div class="container procurement">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <form [formGroup]="procurementNatureForm" *ngIf="procurementNatureForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            formControlName="name"
+            class="form-control"
+            placeholder="Enter procurement name"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" (click)="save()">
+          <i class="fa fa-save"></i> Save
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

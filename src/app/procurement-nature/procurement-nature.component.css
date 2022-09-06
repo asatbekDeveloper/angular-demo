@@ -1,0 +1,29 @@
+.procurement {
+  padding-top: 2rem
+}
+
+.th-procurement {
+  border-bottom: 2px solid #f00;
+}
+
+.thead-procurement {
+  background-color: #04C3FC;
+}
+
+.thead-bottom-procurement {
+  background-color: #08A51F;
+  border-top-color: red;
+}
+
+.tr-procurement {
+  padding: 2rem;
+}
+
+.th-bottom-procurement {
+  border-top: 2px solid #f00;
+  padding: 1.26rem;
+}
+
+table {
+  width: 100%;
+}

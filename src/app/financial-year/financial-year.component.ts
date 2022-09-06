@@ -11,7 +11,6 @@ import { FinancialYear } from './financial-year-interface';
 export class FinancialYearComponent implements OnInit {
 
   financialYears: FinancialYear[] = [];
-  displayedColumns: string[] = ['id', 'year', 'default', 'edit', 'delete'];
   isLoading = true;
 
   constructor(private financialYearApi: FinancialYearApi,
@@ -26,13 +25,15 @@ export class FinancialYearComponent implements OnInit {
 
   delete(id: any) {
     console.log("id: ", id)
-    this.financialYearApi.delete(id)
-      .then(res => {
-        console.log("response: ", res);
-        this.getAll();
-      }).catch(err => {
-        console.log(err);
-      });
+    if (window.confirm('Are you sure you want to delete this item')) {
+      this.financialYearApi.delete(id)
+        .then(res => {
+          console.log("response: ", res);
+          this.getAll();
+        }).catch(err => {
+          console.log(err);
+        });
+    }
   }
 
 
