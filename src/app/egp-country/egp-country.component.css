@@ -1,0 +1,29 @@
+.egp-country {
+  padding-top: 2rem
+}
+
+.th-egp-country {
+  border-bottom: 2px solid #f00;
+}
+
+.thead-egp-country {
+  background-color: #04C3FC;
+}
+
+.thead-bottom-egp-country {
+  background-color: #08A51F;
+  border-top-color: red;
+}
+
+.tr-egp-country {
+  padding: 2rem;
+}
+
+.th-bottom-egp-country {
+  border-top: 2px solid #f00;
+  padding: 1.26rem;
+}
+
+table {
+  width: 100%;
+}

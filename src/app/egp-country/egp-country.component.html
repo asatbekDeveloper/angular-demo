@@ -1,18 +1,19 @@
-<div class="container payment">
+<div class="container egp-country">
   <div class="row">
     <div class="col-md-12">
       <h4>
-        <a class="btn btn-primary btn-sm" routerLink="/payment-type/create">
+        <a class="btn btn-primary btn-sm" routerLink="/egp-country/create">
           <i class="fa fa-plus"></i> Add</a
         >
       </h4>
       <br />
-      <table  class="table table-bordered table-striped">
-        <thead class="thead-payment">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-egp-country">
           <tr>
-            <th scope="col" class="th-payment">#</th>
-            <th scope="col" class="th-payment">Type</th>
-            <th scope="col" colspan="2" class="th-payment">Settings</th>
+            <th scope="col" class="th-egp-country">#</th>
+            <th scope="col" class="th-egp-country">Country</th>
+            <th scope="col" class="th-egp-country">isDefault</th>
+            <th scope="col" colspan="2" class="th-egp-country">Settings</th>
           </tr>
         </thead>
         <tbody *ngIf="isLoading">
@@ -23,7 +24,7 @@
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  background: transparent;
+                  background:  transparent;
                   padding-top: 10%;
                   padding-bottom: 10%;
                 "
@@ -39,30 +40,30 @@
           </tr>
         </tbody>
         <tbody *ngIf="!isLoading">
-          <tr *ngFor="let payment of paymentTypes; let i = index">
+          <tr *ngFor="let egp of egpCountries; let i = index">
             <th scope="row">{{ i + 1 }}</th>
-            <td>{{ payment.type }}</td>
+            <td>{{ egp.countryName }}</td>
+            <td>{{ egp.default }}</td>
             <td>
               <a
                 class="btn btn-outline-info btn-sm"
-                [routerLink]="['/payment-type/update/', payment.id]"
+                [routerLink]="['/egp-country/update/', egp.id]"
                 ><i class="fa fa-edit"></i
               ></a>
             </td>
             <td>
-              <a
-                class="btn btn-outline-danger btn-sm"
-                (click)="delete(payment.id)"
+              <a class="btn btn-outline-danger btn-sm" (click)="delete(egp.id)"
                 ><i class="fa fa-trash"></i
               ></a>
             </td>
           </tr>
         </tbody>
-        <thead class="thead-bottom-payment">
-          <tr class="tr-payment">
-            <th scope="col" class="th-bottom-payment"></th>
-            <th scope="col" class="th-bottom-payment"></th>
-            <th scope="col" colspan="2" class="th-bottom-payment"></th>
+        <thead class="thead-bottom-egp-country">
+          <tr class="tr-egp-country">
+            <th scope="col" class="th-bottom-egp-country"></th>
+            <th scope="col" class="th-bottom-egp-country"></th>
+            <th scope="col" class="th-bottom-egp-country"></th>
+            <th scope="col" colspan="2" class="th-bottom-egp-country"></th>
           </tr>
         </thead>
       </table>

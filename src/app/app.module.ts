@@ -21,6 +21,9 @@ import { ProcurementNatureUpdateComponent } from './procurement-nature/component
 import { PaymentTypeComponent } from './payment-type/payment-type.component';
 import { PaymentTypeCreateComponent } from './payment-type/components/payment-type-create/payment-type-create.component';
 import { PaymentTypeUpdateComponent } from './payment-type/components/payment-type-update/payment-type-update.component';
+import { EgpCountryComponent } from './egp-country/egp-country.component';
+import { EgpCountryUpdateComponent } from './egp-country/components/egp-country-update/egp-country-update.component';
+import { EgpCountryCreateComponent } from './egp-country/components/egp-country-create/egp-country-create.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { PaymentTypeUpdateComponent } from './payment-type/components/payment-ty
     ProcurementNatureUpdateComponent,
     PaymentTypeComponent,
     PaymentTypeCreateComponent,
-    PaymentTypeUpdateComponent
+    PaymentTypeUpdateComponent,
+    EgpCountryComponent,
+    EgpCountryUpdateComponent,
+    EgpCountryCreateComponent
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,9 @@ import { ProcurementNatureUpdateComponent } from './procurement-nature/component
 import { PaymentTypeComponent } from './payment-type/payment-type.component';
 import { PaymentTypeCreateComponent } from './payment-type/components/payment-type-create/payment-type-create.component';
 import { PaymentTypeUpdateComponent } from './payment-type/components/payment-type-update/payment-type-update.component';
+import { EgpCountryComponent } from './egp-country/egp-country.component';
+import { EgpCountryCreateComponent } from './egp-country/components/egp-country-create/egp-country-create.component';
+import { EgpCountryUpdateComponent } from './egp-country/components/egp-country-update/egp-country-update.component';
 
 const routes: Routes = [
   {
@@ -69,6 +72,21 @@ const routes: Routes = [
   {
     path: 'payment-type/update/:paymentTypeId',
     component: PaymentTypeUpdateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'egp-country',
+    component: EgpCountryComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'egp-country/create',
+    component: EgpCountryCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'egp-country/update/:egpCountryId',
+    component: EgpCountryUpdateComponent,
     canActivate: [AuthGuard]
   },
   {
