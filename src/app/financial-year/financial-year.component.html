@@ -7,7 +7,7 @@
         >
       </h4>
       <br />
-      <table class="table table-bordered table-striped">
+      <table *ngIf="!isLoading" class="table table-bordered table-striped">
         <thead class="thead-financial">
           <tr>
             <th scope="col" class="th-financial">#</th>
@@ -47,6 +47,23 @@
           </tr>
         </thead>
       </table>
+      <div
+        *ngIf="isLoading"
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: white;
+          padding-top: 20%;
+        "
+      >
+        <mat-progress-spinner
+          color="primary"
+          mode="indeterminate"
+          [diameter]="30"
+        >
+        </mat-progress-spinner>
+      </div>
     </div>
   </div>
 </div>

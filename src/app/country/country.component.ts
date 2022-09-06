@@ -16,6 +16,8 @@ interface Country {
 export class CountryComponent implements OnInit {
 
   countries: Country[] = [];
+  isLoading = true;
+  displayedColumns: string[] = ['id', 'name', 'code'];
 
   constructor(private countryApi: CountryApi) {
 
@@ -24,10 +26,20 @@ export class CountryComponent implements OnInit {
   ngOnInit(): void {
     this.countryApi.getAll()
       .then(res => {
-        console.log("countries: ",this.countries);
+        console.log("countries: ", this.countries);
         this.countries = res;
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 1000);
+
+      }).catch(err => {
+        console.log(err);
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 1000);
       });
   }
+
 
 
 }

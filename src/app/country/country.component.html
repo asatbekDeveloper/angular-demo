@@ -1,7 +1,7 @@
 <div class="container country">
   <div class="row">
     <div class="col-md-12">
-      <table class="table table-bordered table-striped">
+      <table *ngIf="!isLoading" class="table table-bordered table-striped">
         <thead class="thead-country">
           <tr>
             <th scope="col" class="th-country">#</th>
@@ -24,6 +24,23 @@
           </tr>
         </thead>
       </table>
+      <div
+        *ngIf="isLoading"
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: white;
+          padding-top: 20%;
+        "
+      >
+        <mat-progress-spinner
+          color="primary"
+          mode="indeterminate"
+          [diameter]="30"
+        >
+        </mat-progress-spinner>
+      </div>
     </div>
   </div>
 </div>

@@ -12,6 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FinancialYearComponent } from './financial-year/financial-year.component';
 import { FinancialYearCreateComponent } from './financial-year/components/financial-year-create/financial-year-create.component';
 import { FinancialYearUpdateComponent } from './financial-year/components/financial-year-update/financial-year-update.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { FinancialYearUpdateComponent } from './financial-year/components/financ
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
