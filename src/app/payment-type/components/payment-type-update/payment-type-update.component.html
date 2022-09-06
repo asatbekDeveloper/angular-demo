@@ -1,0 +1,22 @@
+<div class="container payment">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <form [formGroup]="paymentTypeUpdateForm" (ngSubmit)="update()">
+        <div class="form-group">
+          <label for="type">Type</label>
+          <input
+            id="type"
+            type="text"
+            [(ngModel)]="paymentType.type"
+            formControlName="type"
+            class="form-control"
+            placeholder="Enter payment type"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm">
+          <i class="fa fa-save"></i> Save
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

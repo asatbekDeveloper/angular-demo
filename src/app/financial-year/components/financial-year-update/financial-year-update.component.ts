@@ -12,7 +12,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FinancialYearUpdateComponent implements OnInit {
 
   id: number;
-  financialYear!: FinancialYearUpdateDTO;
+  financialYear: FinancialYearUpdateDTO={
+    id: 0,
+    yearFrom: '',
+    yearTo: '',
+    default: false
+  };
   financialYearUpdateForm: FormGroup;
 
   constructor(private financialYearApi: FinancialYearApi,

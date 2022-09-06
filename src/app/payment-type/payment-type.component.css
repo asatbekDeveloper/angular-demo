@@ -1,0 +1,29 @@
+.payment {
+  padding-top: 2rem
+}
+
+.th-payment {
+  border-bottom: 2px solid #f00;
+}
+
+.thead-payment {
+  background-color: #04C3FC;
+}
+
+.thead-bottom-payment {
+  background-color: #08A51F;
+  border-top-color: red;
+}
+
+.tr-payment {
+  padding: 2rem;
+}
+
+.th-bottom-payment {
+  border-top: 2px solid #f00;
+  padding: 1.26rem;
+}
+
+table {
+  width: 100%;
+}

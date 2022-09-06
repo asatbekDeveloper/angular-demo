@@ -1,0 +1,65 @@
+<div class="container payment">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>
+        <a class="btn btn-primary btn-sm" routerLink="/payment-type/create">
+          <i class="fa fa-plus"></i> Add</a
+        >
+      </h4>
+      <br />
+      <table *ngIf="!isLoading" class="table table-bordered table-striped">
+        <thead class="thead-payment">
+          <tr>
+            <th scope="col" class="th-payment">#</th>
+            <th scope="col" class="th-payment">Type</th>
+            <th scope="col" colspan="2" class="th-payment">Settings</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let payment of paymentTypes; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ payment.type }}</td>
+            <td>
+              <a
+                class="btn btn-outline-info btn-sm"
+                [routerLink]="['/payment-type/update/', payment.id]"
+                ><i class="fa fa-edit"></i
+              ></a>
+            </td>
+            <td>
+              <a
+                class="btn btn-outline-danger btn-sm"
+                (click)="delete(payment.id)"
+                ><i class="fa fa-trash"></i
+              ></a>
+            </td>
+          </tr>
+        </tbody>
+        <thead class="thead-bottom-payment">
+          <tr class="tr-payment">
+            <th scope="col" class="th-bottom-payment"></th>
+            <th scope="col" class="th-bottom-payment"></th>
+            <th scope="col" colspan="2" class="th-bottom-payment"></th>
+          </tr>
+        </thead>
+      </table>
+      <div
+        *ngIf="isLoading"
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: white;
+          padding-top: 20%;
+        "
+      >
+        <mat-progress-spinner
+          color="primary"
+          mode="indeterminate"
+          [diameter]="30"
+        >
+        </mat-progress-spinner>
+      </div>
+    </div>
+  </div>
+</div>

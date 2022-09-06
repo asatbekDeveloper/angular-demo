@@ -13,7 +13,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProcurementNatureUpdateComponent implements OnInit {
 
   id: number;
-  procurementNature!: ProcurementNature;
+  procurementNature: ProcurementNature={
+    id: 0,
+    name: ''
+  };
   procurementNatureUpdateForm: FormGroup;
 
   constructor(private procurementNatureApi: ProcurementNatureApi,
@@ -25,7 +28,7 @@ export class ProcurementNatureUpdateComponent implements OnInit {
       id: '',
       name: ['', Validators.required]
     });
-    
+
     this.id = this.route.snapshot.params['procurementNatureId'];
     this.procurementNatureApi.get(this.id)
       .then(res => {

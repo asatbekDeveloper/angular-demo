@@ -11,6 +11,9 @@ import { FinancialYearCreateComponent } from './financial-year/components/financ
 import { ProcurementNatureComponent } from './procurement-nature/procurement-nature.component';
 import { ProcurementNatureCreateComponent } from './procurement-nature/components/procurement-nature-create/procurement-nature-create.component';
 import { ProcurementNatureUpdateComponent } from './procurement-nature/components/procurement-nature-update/procurement-nature-update.component';
+import { PaymentTypeComponent } from './payment-type/payment-type.component';
+import { PaymentTypeCreateComponent } from './payment-type/components/payment-type-create/payment-type-create.component';
+import { PaymentTypeUpdateComponent } from './payment-type/components/payment-type-update/payment-type-update.component';
 
 const routes: Routes = [
   {
@@ -54,6 +57,21 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'payment-type',
+    component: PaymentTypeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'payment-type/create',
+    component: PaymentTypeCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'payment-type/update/:paymentTypeId',
+    component: PaymentTypeUpdateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'login',
     component: LoginComponent
   }
@@ -64,4 +82,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

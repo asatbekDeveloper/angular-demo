@@ -1,0 +1,22 @@
+<div class="container payment">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <form [formGroup]="paymentTypeCreateForm" *ngIf="paymentTypeCreateForm">
+        <div class="form-group">
+          <label for="type">Type</label>
+          <input
+            id="type"
+            type="text"
+            name="type"
+            formControlName="type"
+            class="form-control"
+            placeholder="Enter payment type"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" (click)="save()">
+          <i class="fa fa-save"></i> Save
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
