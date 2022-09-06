@@ -25,7 +25,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/app/financial-year/components/financial-year-create/financialYear.js"
+            ]
           },
           "configurations": {
             "production": {
