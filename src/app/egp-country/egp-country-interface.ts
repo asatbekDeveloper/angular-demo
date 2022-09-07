@@ -3,3 +3,10 @@ export interface EgpCountryDTO {
   default: boolean;
   countryName: string;
 }
+
+
+export interface EgpCountry {
+  id: number;
+  default: boolean;
+  countryId: string;
+}

@@ -28,5 +28,21 @@ export class CountryApi {
     }
   }
 
+  async getByName(name:string) {
+
+    let accessToken = localStorage.getItem("accessToken");
+
+    try {
+      const res = await axios.get(this.baseUrl+'/name/'+name,
+        {
+          headers: { "Authorization": `Bearer ${accessToken}` }
+        });
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
 
 }
