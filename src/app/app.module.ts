@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {MatSelectModule} from '@angular/material/select'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +32,10 @@ import { KeywordBaseUpdateComponent } from './keyword-base/components/keyword-ba
 import { ProcurementMethodComponent } from './procurement-method/procurement-method.component';
 import { ProcurementMethodCreateComponent } from './procurement-method/components/procurement-method-create/procurement-method-create.component';
 import { ProcurementMethodUpdateComponent } from './procurement-method/components/procurement-method-update/procurement-method-update.component';
+import { PaymentConfigComponent } from './payment-config/payment-config.component';
+import { PaymentConfigCreateComponent } from './payment-config/components/payment-config-create/payment-config-create.component';
+import { PaymentConfigUpdateComponent } from './payment-config/components/payment-config-update/payment-config-update.component';
+import { SafeHtmlPipe } from './payment-config/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +62,11 @@ import { ProcurementMethodUpdateComponent } from './procurement-method/component
     KeywordBaseUpdateComponent,
     ProcurementMethodComponent,
     ProcurementMethodCreateComponent,
-    ProcurementMethodUpdateComponent
+    ProcurementMethodUpdateComponent,
+    PaymentConfigComponent,
+    PaymentConfigCreateComponent,
+    PaymentConfigUpdateComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,
@@ -67,6 +75,7 @@ import { ProcurementMethodUpdateComponent } from './procurement-method/component
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
+    MatSelectModule,
     MatProgressSpinnerModule,
     NgbModule,
     NgbPaginationModule, NgbAlertModule

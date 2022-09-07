@@ -23,8 +23,8 @@ import { KeywordBaseUpdateComponent } from './keyword-base/components/keyword-ba
 import { ProcurementMethodComponent } from './procurement-method/procurement-method.component';
 // import { ProcurementMethodCreateComponent } from './procurement-method/components/procurement-method-create/procurement-method-create.component';
 // import { ProcurementMethodUpdateComponent } from './procurement-method/components/procurement-method-update/procurement-method-update.component';
-
-
+import { PaymentConfigComponent } from './payment-config/payment-config.component';
+import { PaymentConfigCreateComponent } from './payment-config/components/payment-config-create/payment-config-create.component';
 
 const routes: Routes = [
   {
@@ -127,6 +127,16 @@ const routes: Routes = [
   //   component: ProcurementMethodUpdateComponent,
   //   canActivate: [AuthGuard]
   // },
+  {
+    path: 'payment-config',
+    component: PaymentConfigComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'payment-config/create',
+    component: PaymentConfigCreateComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: 'login',
     component: LoginComponent

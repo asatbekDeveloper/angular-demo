@@ -49,7 +49,7 @@ export class ProcurementMethodComponent implements OnInit {
         setTimeout(() => {
           this.isLoading = false;
         }, 1000);
-        console.log("keywordBases: ", this.procurementMethods);
+        console.log("procurementMethods: ", this.procurementMethods);
       }).catch(err => {
         setTimeout(() => {
           this.isLoading = false;

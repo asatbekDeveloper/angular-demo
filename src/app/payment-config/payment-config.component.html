@@ -1,0 +1,90 @@
+<div class="container payment-config">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>
+        <a class="btn btn-primary btn-sm" routerLink="/payment-config/create">
+          <i class="fa fa-plus"></i> Add</a
+        >
+      </h4>
+      <br />
+      <br />
+      <table class="table table-bordered table-striped">
+        <thead class="thead-payment-config">
+          <tr>
+            <th scope="col" class="th-payment-config">#</th>
+            <th scope="col" class="th-payment-config">Procurement Method</th>
+            <th scope="col" class="th-payment-config">Procurement Nature</th>
+            <th
+              scope="col"
+              class="th-payment-config"
+              *ngFor="let payment of paymentTypes; let i = index"
+            >
+              Payment Type
+            </th>
+            <th scope="col" colspan="2" class="th-payment-config">Settings</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="isLoading">
+          <tr>
+            <th [attr.colspan]="5 + paymentTypes.length">
+              <div
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  background: transparent;
+                  padding-top: 10%;
+                  padding-bottom: 10%;
+                "
+              >
+                <mat-progress-spinner
+                  color="primary"
+                  mode="indeterminate"
+                  [diameter]="30"
+                >
+                </mat-progress-spinner>
+              </div>
+            </th>
+          </tr>
+        </tbody>
+        <tbody *ngIf="!isLoading" id="paymentConfigData">
+          <tr *ngFor="let paymentConfig of paymentConfigs; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ paymentConfig.procurementMethodName }}</td>
+            <td>{{ paymentConfig.procurementNatureName }}</td>
+            <td *ngFor="let pay of paymentConfig.payments">
+              {{ pay.paymentType }}
+              <span style="float: right;" *ngIf="pay.active==true" class="badge badge-success">Yes</span>
+              <span style="float: right;" *ngIf="pay.active==false" class="badge badge-danger">No</span>
+            </td>
+            <td>
+              <a class="btn btn-outline-info btn-sm"
+                ><i class="fa fa-edit"></i
+              ></a>
+            </td>
+            <td>
+              <a
+                class="btn btn-outline-danger btn-sm"
+                (click)="delete(paymentConfig.id)"
+                ><i class="fa fa-trash"></i
+              ></a>
+            </td>
+          </tr>
+        </tbody>
+        <thead class="thead-bottom-payment-config">
+          <tr class="tr-payment-config">
+            <th scope="col" class="th-bottom-payment-config"></th>
+            <th scope="col" class="th-bottom-payment-config"></th>
+            <th scope="col" class="th-bottom-payment-config"></th>
+            <th
+              scope="col"
+              class="th-bottom-payment-config"
+              *ngFor="let payment of paymentTypes; let i = index"
+            ></th>
+            <th scope="col" colspan="2" class="th-bottom-payment-config"></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>

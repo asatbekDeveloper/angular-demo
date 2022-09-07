@@ -1,0 +1,29 @@
+.payment-config {
+  padding-top: 2rem
+}
+
+.th-payment-config {
+  border-bottom: 2px solid #f00;
+}
+
+.thead-payment-config {
+  background-color: #04C3FC;
+}
+
+.thead-bottom-payment-config {
+  background-color: #08A51F;
+  border-top-color: red;
+}
+
+.tr-payment-config {
+  padding: 2rem;
+}
+
+.th-bottom-payment-config {
+  border-top: 2px solid #f00;
+  padding: 1.26rem;
+}
+
+table {
+  width: 100%;
+}
