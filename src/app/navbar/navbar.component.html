@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="authService.isLoggedIn$ | async">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="authService.isLoggedIn$ | async" style="padding-left:1rem;
+padding-right:1rem">
   <a class="navbar-brand" routerLink="/">Angular</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,6 +26,12 @@
       </li>
       <li class="nav-item active">
         <a routerLink="/egp-country" class="nav-link">Egp Country</a>
+      </li>
+      <li class="nav-item active">
+        <a routerLink="/keyword-base" class="nav-link">Keyword Base</a>
+      </li>
+      <li class="nav-item active">
+        <a routerLink="/procurement-method" class="nav-link">Procurement Method</a>
       </li>
     </ul>
 

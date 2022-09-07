@@ -1,0 +1,76 @@
+
+<div class="container keyword">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>
+        <a class="btn btn-primary btn-sm" routerLink="/keyword-base/create">
+          <i class="fa fa-plus"></i> Add</a
+        >
+      </h4>
+      <br />
+      <table class="table table-bordered table-striped">
+        <thead class="thead-keyword">
+          <tr>
+            <th scope="col" class="th-keyword">#</th>
+            <th scope="col" class="th-keyword">GenericName</th>
+            <th scope="col" class="th-keyword">Country</th>
+            <th scope="col" class="th-keyword">WiseName</th>
+            <th scope="col" colspan="2" class="th-keyword">Settings</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="isLoading">
+          <tr>
+            <th colspan="5">
+              <div
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  background:  transparent;
+                  padding-top: 10%;
+                  padding-bottom: 10%;
+                "
+              >
+                <mat-progress-spinner
+                  color="primary"
+                  mode="indeterminate"
+                  [diameter]="30"
+                >
+                </mat-progress-spinner>
+              </div>
+            </th>
+          </tr>
+        </tbody>
+        <tbody *ngIf="!isLoading">
+          <tr *ngFor="let keyword of keywordBases; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ keyword.genericName }}</td>
+            <td>{{ keyword.country }}</td>
+            <td>{{ keyword.wiseName }}</td>
+            <td>
+              <a
+                class="btn btn-outline-info btn-sm"
+                [routerLink]="['/keyword-base/update/', keyword.id]"
+                ><i class="fa fa-edit"></i
+              ></a>
+            </td>
+            <td>
+              <a class="btn btn-outline-danger btn-sm" (click)="delete(keyword.id)"
+                ><i class="fa fa-trash"></i
+              ></a>
+            </td>
+          </tr>
+        </tbody>
+        <thead class="thead-bottom-keyword">
+          <tr class="tr-keyword">
+            <th scope="col" class="th-bottom-keyword"></th>
+            <th scope="col" class="th-bottom-keyword"></th>
+            <th scope="col" class="th-bottom-keyword"></th>
+            <th scope="col" class="th-bottom-keyword"></th>
+            <th scope="col" colspan="2" class="th-bottom-keyword"></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+</div>

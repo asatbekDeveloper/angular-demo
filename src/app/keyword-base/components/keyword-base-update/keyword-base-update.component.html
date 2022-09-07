@@ -1,0 +1,32 @@
+<div class="container keyword">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <form [formGroup]="keywordBaseUpdateForm" *ngIf="keywordBaseUpdateForm">
+        <div class="form-group">
+          <label for="countryId">Select Country</label>
+          <select
+            class="form-control"
+            formControlName="countryId"
+            id="countryId"
+            [(ngModel)]="countryId"
+          >
+            <option *ngFor="let country of countries" [value]="country.id">
+              {{ country.name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="genericName">GenericName </label>
+          <input class="form-control"  [(ngModel)]="keywordBase.genericName" type="text" id="genericName" formControlName="genericName" />
+        </div>
+        <div class="form-group">
+          <label for="wiseName">WiseName </label>
+          <input class="form-control" type="text"  [(ngModel)]="keywordBase.wiseName" id="wiseName" formControlName="wiseName" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" (click)="update()">
+          <i class="fa fa-save"></i> Save
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

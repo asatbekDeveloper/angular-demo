@@ -26,6 +26,12 @@ import { EgpCountryUpdateComponent } from './egp-country/components/egp-country-
 import { EgpCountryCreateComponent } from './egp-country/components/egp-country-create/egp-country-create.component';
 import {NgbPaginationModule, NgbAlertModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ToastComponent } from './toast/toast.component';
+import { KeywordBaseComponent } from './keyword-base/keyword-base.component';
+import { KeywordBaseCreateComponent } from './keyword-base/components/keyword-base-create/keyword-base-create.component';
+import { KeywordBaseUpdateComponent } from './keyword-base/components/keyword-base-update/keyword-base-update.component';
+import { ProcurementMethodComponent } from './procurement-method/procurement-method.component';
+import { ProcurementMethodCreateComponent } from './procurement-method/components/procurement-method-create/procurement-method-create.component';
+import { ProcurementMethodUpdateComponent } from './procurement-method/components/procurement-method-update/procurement-method-update.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +52,13 @@ import { ToastComponent } from './toast/toast.component';
     EgpCountryComponent,
     EgpCountryUpdateComponent,
     EgpCountryCreateComponent,
-    ToastComponent
+    ToastComponent,
+    KeywordBaseComponent,
+    KeywordBaseCreateComponent,
+    KeywordBaseUpdateComponent,
+    ProcurementMethodComponent,
+    ProcurementMethodCreateComponent,
+    ProcurementMethodUpdateComponent
   ],
   imports: [
     BrowserModule,

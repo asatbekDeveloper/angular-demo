@@ -1,0 +1,29 @@
+.procurement-method {
+  padding-top: 2rem
+}
+
+.th-procurement-method {
+  border-bottom: 2px solid #f00;
+}
+
+.thead-procurement-method {
+  background-color: #04C3FC;
+}
+
+.thead-bottom-procurement-method {
+  background-color: #08A51F;
+  border-top-color: red;
+}
+
+.tr-procurement-method {
+  padding: 2rem;
+}
+
+.th-bottom-procurement-method {
+  border-top: 2px solid #f00;
+  padding: 1.26rem;
+}
+
+table {
+  width: 100%;
+}

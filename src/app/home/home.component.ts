@@ -16,20 +16,4 @@ export class HomeComponent implements OnInit {
   }
 
 
-  showSuccess() {
-    this.toastService.show('Successfully Created', {
-      classname: 'bg-success text-light',
-      delay: 2000 ,
-      autohide: true
-    });
-  }
-  showError() {
-    this.toastService.show('SuccessFully Deleted', {
-      classname: 'bg-danger text-light',
-      delay: 2000 ,
-      autohide: true
-    });
-  }
-
-
 }
