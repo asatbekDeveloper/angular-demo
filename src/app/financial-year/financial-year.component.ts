@@ -1,3 +1,4 @@
+import { ToastService } from 'src/app/_services/toast.service';
 import { Router } from '@angular/router';
 import { FinancialYearApi } from 'src/app/api/financial-year/financial-year-api';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +15,7 @@ export class FinancialYearComponent implements OnInit {
   isLoading = true;
 
   constructor(private financialYearApi: FinancialYearApi,
-    private router: Router) {
+    private router: Router,private toastService:ToastService) {
 
   }
 
@@ -30,6 +31,11 @@ export class FinancialYearComponent implements OnInit {
         .then(res => {
           console.log("response: ", res);
           this.getAll();
+          this.toastService.show('SuccessFully Deleted', {
+            classname: 'bg-danger text-light',
+            delay: 2000 ,
+            autohide: true
+          });
         }).catch(err => {
           console.log(err);
         });

@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FinancialYearApi } from 'src/app/api/financial-year/financial-year-api';
+import { ToastService } from 'src/app/_services/toast.service';
 
 
 
@@ -19,6 +20,7 @@ export class FinancialYearCreateComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private router: Router,
+    private toastService:ToastService,
     private financialYearApi: FinancialYearApi) {
     this.financialYearCreateForm = this.fb.group({
       yearFrom: ['', Validators.required],
@@ -43,6 +45,11 @@ export class FinancialYearCreateComponent implements OnInit {
         .then((res: any) => {
           console.log("response: ", res);
           this.router.navigateByUrl("/financial-year");
+          this.toastService.show('SuccessFully Created', {
+            classname: 'bg-success text-light',
+            delay: 2000 ,
+            autohide: true
+          });
         }).catch((err: any) => {
           console.log(err);
         });

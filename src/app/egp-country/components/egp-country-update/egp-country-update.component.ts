@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Country } from 'src/app/country/country.component';
 import { CountryApi } from 'src/app/api/country/country-api';
 import { EgpCountry } from '../../egp-country-interface';
+import { ToastService } from 'src/app/_services/toast.service';
 
 @Component({
   selector: 'app-egp-country-update',
@@ -30,7 +31,8 @@ export class EgpCountryUpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private countryApi: CountryApi) {
+    private countryApi: CountryApi,
+    private toastService:ToastService) {
 
     this.egpCountryUpdateForm = this.fb.group({
       id: '',
@@ -41,7 +43,7 @@ export class EgpCountryUpdateComponent implements OnInit {
     this.id = this.route.snapshot.params['egpCountryId'];
     this.getEgpCountry(this.id);
   }
-  
+
   getEgpCountry(id: number) {
     this.egpCountryApi.get(this.id)
     .then(res => {
@@ -88,6 +90,11 @@ export class EgpCountryUpdateComponent implements OnInit {
         .then(res => {
           console.log("response: ", res);
           this.router.navigateByUrl("/egp-country");
+          this.toastService.show('SuccessFully Updated', {
+            classname: 'bg-info text-light',
+            delay: 2000 ,
+            autohide: true
+          });
         }).catch(err => {
           console.log(err);
         });

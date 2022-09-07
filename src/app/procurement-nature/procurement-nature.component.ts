@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProcurementNatureApi } from '../api/procurement-nature/procurement-nature-api';
+import { ToastService } from '../_services/toast.service';
 import { ProcurementNature } from './procurement-nature-interface';
 
 
@@ -16,7 +17,7 @@ export class ProcurementNatureComponent implements OnInit {
   isLoading = true;
 
   constructor(private procurementNatureApi: ProcurementNatureApi,
-    private router: Router) {
+    private router: Router,private toastService:ToastService) {
 
   }
 
@@ -32,6 +33,11 @@ export class ProcurementNatureComponent implements OnInit {
         .then(res => {
           console.log("response: ", res);
           this.getAll();
+          this.toastService.show('SuccessFully Deleted', {
+            classname: 'bg-danger text-light',
+            delay: 2000 ,
+            autohide: true
+          });
         }).catch(err => {
           console.log(err);
         });

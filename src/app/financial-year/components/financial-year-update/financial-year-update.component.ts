@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FinancialYearApi } from 'src/app/api/financial-year/financial-year-api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastService } from 'src/app/_services/toast.service';
 
 @Component({
   selector: 'app-financial-year-update',
@@ -23,6 +24,7 @@ export class FinancialYearUpdateComponent implements OnInit {
   constructor(private financialYearApi: FinancialYearApi,
     private route: ActivatedRoute,
     private router: Router,
+    private toastService:ToastService,
     private fb: FormBuilder,) {
 
     this.financialYearUpdateForm = this.fb.group({
@@ -67,6 +69,11 @@ export class FinancialYearUpdateComponent implements OnInit {
         .then(res => {
           console.log("response: ",res);
           this.router.navigateByUrl("/financial-year");
+          this.toastService.show('SuccessFully Updated', {
+            classname: 'bg-info text-light',
+            delay: 2000 ,
+            autohide: true
+          });
         }).catch(err => {
           console.log(err);
         });

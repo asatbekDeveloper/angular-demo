@@ -2,6 +2,7 @@ import { PaymentTypeApi } from './../api/payment-type/payment-type-api';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PaymentType } from './payment-type-interface';
+import { ToastService } from '../_services/toast.service';
 
 @Component({
   selector: 'app-payment-type',
@@ -14,7 +15,7 @@ export class PaymentTypeComponent implements OnInit {
   isLoading = true;
 
   constructor(private paymentTypeApi: PaymentTypeApi,
-    private router: Router) {
+    private router: Router,private toastService:ToastService) {
 
   }
 
@@ -30,6 +31,11 @@ export class PaymentTypeComponent implements OnInit {
         .then(res => {
           console.log("response: ", res);
           this.getAll();
+          this.toastService.show('SuccessFully Deleted', {
+            classname: 'bg-danger text-light',
+            delay: 2000 ,
+            autohide: true
+          });
         }).catch(err => {
           console.log(err);
         });

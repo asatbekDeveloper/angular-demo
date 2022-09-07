@@ -2,6 +2,7 @@ import { EgpCountryApi } from './../api/egp-country/egp-country-api';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EgpCountryDTO } from './egp-country-interface';
+import { ToastService } from '../_services/toast.service';
 
 @Component({
   selector: 'app-egp-country',
@@ -14,7 +15,8 @@ export class EgpCountryComponent implements OnInit {
   isLoading = true;
 
   constructor(private egpCountryApi: EgpCountryApi,
-    private router: Router) {
+    private router: Router,
+    private toastService:ToastService) {
 
   }
 
@@ -30,6 +32,7 @@ export class EgpCountryComponent implements OnInit {
         .then(res => {
           console.log("response: ", res);
           this.getAll();
+          this.showDeleted();
         }).catch(err => {
           console.log(err);
         });
@@ -52,5 +55,16 @@ export class EgpCountryComponent implements OnInit {
         console.log(err);
       });
   }
+
+
+
+  showDeleted() {
+    this.toastService.show('SuccessFully Deleted', {
+      classname: 'bg-danger text-light',
+      delay: 2000 ,
+      autohide: true
+    });
+  }
+
 
 }

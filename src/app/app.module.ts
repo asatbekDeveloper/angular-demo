@@ -24,6 +24,8 @@ import { PaymentTypeUpdateComponent } from './payment-type/components/payment-ty
 import { EgpCountryComponent } from './egp-country/egp-country.component';
 import { EgpCountryUpdateComponent } from './egp-country/components/egp-country-update/egp-country-update.component';
 import { EgpCountryCreateComponent } from './egp-country/components/egp-country-create/egp-country-create.component';
+import {NgbPaginationModule, NgbAlertModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ToastComponent } from './toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { EgpCountryCreateComponent } from './egp-country/components/egp-country-
     PaymentTypeUpdateComponent,
     EgpCountryComponent,
     EgpCountryUpdateComponent,
-    EgpCountryCreateComponent
+    EgpCountryCreateComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,9 @@ import { EgpCountryCreateComponent } from './egp-country/components/egp-country-
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgbModule,
+    NgbPaginationModule, NgbAlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]

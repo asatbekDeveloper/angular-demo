@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaymentType } from '../../payment-type-interface';
+import { ToastService } from 'src/app/_services/toast.service';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class PaymentTypeUpdateComponent implements OnInit {
   constructor(private paymentTypeApi: PaymentTypeApi,
     private route: ActivatedRoute,
     private router: Router,
+    private toastService:ToastService,
     private fb: FormBuilder,) {
 
     this.paymentTypeUpdateForm = this.fb.group({
@@ -56,6 +58,11 @@ export class PaymentTypeUpdateComponent implements OnInit {
         .then(res => {
           console.log("response: ", res);
           this.router.navigateByUrl("/payment-type");
+          this.toastService.show('SuccessFully Updated', {
+            classname: 'bg-info text-light',
+            delay: 2000 ,
+            autohide: true
+          });
         }).catch(err => {
           console.log(err);
         });

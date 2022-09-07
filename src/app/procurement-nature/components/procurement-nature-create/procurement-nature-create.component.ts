@@ -1,7 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProcurementNatureApi } from 'src/app/api/procurement-nature/procurement-nature-api';
+import { ToastService } from 'src/app/_services/toast.service';
 
 @Component({
   selector: 'app-procurement-nature-create',
@@ -13,7 +15,7 @@ export class ProcurementNatureCreateComponent implements OnInit {
   procurementNatureForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-    private router: Router,
+    private router: Router,private toastService:ToastService,
     private procurementNatureApi: ProcurementNatureApi) {
     this.procurementNatureForm = this.fb.group({
       id: '',
@@ -34,6 +36,11 @@ export class ProcurementNatureCreateComponent implements OnInit {
         .then((res: any) => {
           console.log("response: ", res);
           this.router.navigateByUrl("/procurement-nature");
+          this.toastService.show('SuccessFully Created', {
+            classname: 'bg-success text-light',
+            delay: 2000 ,
+            autohide: true
+          });
         }).catch((err: any) => {
           console.log(err);
         });
