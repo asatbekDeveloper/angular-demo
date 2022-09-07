@@ -2,12 +2,6 @@
   <div class="row">
     <div class="col-md-12">
       <h4>
-        <!-- <a
-          class="btn btn-primary btn-sm"
-          routerLink="/procurement-method/create"
-        >
-          <i class="fa fa-plus"></i> Add</a
-        > -->
         <app-procurement-method-create></app-procurement-method-create>
       </h4>
       <br />
@@ -55,14 +49,10 @@
             <td>{{ procurementMethod.wiseName }}</td>
             <td>{{ procurementMethod.procurementNature }}</td>
             <td>
-              <a
-                class="btn btn-outline-info btn-sm"
-                [routerLink]="[
-                  '/procurement-method/update/',
-                  procurementMethod.id
-                ]"
-                ><i class="fa fa-edit"></i
-              ></a>
+              <app-procurement-method-update
+                  [id]="procurementMethod.id"
+                ></app-procurement-method-update
+              >
             </td>
             <td>
               <a

@@ -21,8 +21,8 @@ import { KeywordBaseComponent } from './keyword-base/keyword-base.component';
 import { KeywordBaseCreateComponent } from './keyword-base/components/keyword-base-create/keyword-base-create.component';
 import { KeywordBaseUpdateComponent } from './keyword-base/components/keyword-base-update/keyword-base-update.component';
 import { ProcurementMethodComponent } from './procurement-method/procurement-method.component';
-import { ProcurementMethodCreateComponent } from './procurement-method/components/procurement-method-create/procurement-method-create.component';
-import { ProcurementMethodUpdateComponent } from './procurement-method/components/procurement-method-update/procurement-method-update.component';
+// import { ProcurementMethodCreateComponent } from './procurement-method/components/procurement-method-create/procurement-method-create.component';
+// import { ProcurementMethodUpdateComponent } from './procurement-method/components/procurement-method-update/procurement-method-update.component';
 
 
 
@@ -117,16 +117,16 @@ const routes: Routes = [
     component: ProcurementMethodComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path: 'procurement-method/create',
-    component: ProcurementMethodCreateComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'procurement-method/update/:procurementMethodId',
-    component: ProcurementMethodUpdateComponent,
-    canActivate: [AuthGuard]
-  },
+  // {
+  //   path: 'procurement-method/create',
+  //   component: ProcurementMethodCreateComponent,
+  //   canActivate: [AuthGuard]
+  // },
+  // {
+  //   path: 'procurement-method/update/:procurement',
+  //   component: ProcurementMethodUpdateComponent,
+  //   canActivate: [AuthGuard]
+  // },
   {
     path: 'login',
     component: LoginComponent

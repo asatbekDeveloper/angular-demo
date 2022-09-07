@@ -1,1 +1,42 @@
-<p>procurement-method-update works!</p>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Procurement Method Update</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="procurementMethodUpdateForm" *ngIf="procurementMethodUpdateForm">
+      <div class="mb-3">
+        <label for="countryId">Select Procurement Nature</label>
+        <select
+          class="form-control"
+          formControlName="procurementNatureId"
+          id="procurementNatureId"
+          [(ngModel)]="procurementMethod.procurementNatureId"
+        >
+          <option *ngFor="let procurementNature of procurementNatures" [value]="procurementNature.id">
+            {{ procurementNature.name }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="countryId">Select KeywordBase</label>
+        <select
+          class="form-control"
+          formControlName="keywordBaseId"
+          id="keywordBaseId"
+          [(ngModel)]="procurementMethod.keywordBaseId"
+        >
+          <option *ngFor="let keywordBase of keywordBases" [value]="keywordBase.id">
+            {{ keywordBase.wiseName }}
+          </option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="update()">Save</button>
+  </div>
+</ng-template>
+<button  class="btn btn-outline-info btn-sm" (click)="open(content)"><i class="fa fa-edit"></i></button>
+
+

@@ -7,6 +7,8 @@ import { KeywordBaseDTO } from 'src/app/keyword-base/keyword-base-interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/_services/toast.service';
+import { ProcurementMethodApi } from 'src/app/api/procurement-method/procurement-method-api';
+import { ProcurementMethodComponent } from '../../procurement-method.component';
 
 
 @Component({
@@ -26,7 +28,9 @@ export class ProcurementMethodCreateComponent implements OnInit {
     private router: Router,
     private procurementNatureApi: ProcurementNatureApi,
     private toastService: ToastService,
-    private modalService: NgbModal) {
+    private modalService: NgbModal,
+    private procurementMethodApi: ProcurementMethodApi,
+    private procurementMethod: ProcurementMethodComponent) {
 
     this.procurementMethodCreateForm = this.fb.group({
       procurementNatureId: ['', Validators.required],
@@ -45,7 +49,32 @@ export class ProcurementMethodCreateComponent implements OnInit {
   }
 
   save() {
-    this.modalService.dismissAll();
+    const val = this.procurementMethodCreateForm.value;
+
+    if (val.procurementNatureId && val.keywordBaseId) {
+
+
+      this.procurementMethodApi.save(val.keywordBaseId, val.procurementNatureId)
+        .then((res: any) => {
+          console.log("response: ", res);
+          this.procurementMethod.getAll();
+          this.modalService.dismissAll();
+          this.toastService.show('SuccessFully Created', {
+            classname: 'bg-success text-light',
+            delay: 2000,
+            autohide: true
+          });
+
+          this.procurementMethodCreateForm = this.fb.group({
+            procurementNatureId: ['', Validators.required],
+            keywordBaseId: ['', Validators.required]
+          });
+          
+        }).catch((err: any) => {
+          console.log(err);
+        });
+    }
+
   }
 
 

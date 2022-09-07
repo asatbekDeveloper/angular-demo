@@ -42,7 +42,21 @@ export class ProcurementMethodApi {
     } catch (err) {
       console.log(err);
     }
+  }
 
+  async getProcurementMethod(id:number){
+    let accessToken = localStorage.getItem("accessToken");
+
+    try {
+      const res = await axios.get(this.baseUrl + '/procurement_method/' + id,
+        {
+          headers: { "Authorization": `Bearer ${accessToken}` }
+        });
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+    }
   }
 
 
