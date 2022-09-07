@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Injectable } from "@angular/core";
+import { PaymentBaseApi } from "../payment-base/payment-base-api";
 
 export interface PaymentConfigDTO {
   id: number;
@@ -30,7 +31,7 @@ export class PaymentConfigApi {
   baseUrl: string = "http://localhost:9595/v1/payment/payment_configuration";
 
 
-  constructor() {
+  constructor(private paymentBaseApi: PaymentBaseApi) {
   }
 
   async getAll() {
@@ -47,6 +48,33 @@ export class PaymentConfigApi {
     } catch (err) {
       console.log(err);
     }
+  }
+
+  async save(procurementNatureId: number, procurementMethodId: number, types: any) {
+    let accessToken = localStorage.getItem("accessToken");
+    console.log(procurementNatureId, procurementMethodId, types);
+
+    await axios.post(this.baseUrl,
+      { procurementNatureId, procurementMethodId, types },
+      {
+        headers: { "Authorization": `Bearer ${accessToken}` },
+      })
+      .then(res => {
+        console.log(res);
+        for (let i = 0; i < types.length; i++) {
+          types[i].paymentConfigurationId = res.data.id;
+        }
+        this.paymentBaseApi.saveAll(types)
+          .then(response => {
+            console.log(response);
+          }).catch(error => {
+            console.log(error);
+          });
+        return res.data;
+      }).catch(err => {
+        console.log(err);
+      }
+      );
   }
 
 
