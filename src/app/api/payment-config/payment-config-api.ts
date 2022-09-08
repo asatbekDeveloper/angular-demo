@@ -9,6 +9,12 @@ export interface PaymentConfigDTO {
   payments: PaymentBaseDTO[];
 }
 
+export interface PaymentConfig {
+  id: number;
+  procurementNatureId: number;
+  procurementMethodId: number;
+}
+
 export interface PaymentBaseDTO {
   id: number;
   paymentType: string;
@@ -49,6 +55,41 @@ export class PaymentConfigApi {
       console.log(err);
     }
   }
+
+
+  async getAllData(id: number) {
+
+    let accessToken = localStorage.getItem("accessToken");
+
+    try {
+      const res = await axios.get(this.baseUrl + '/' + id,
+        {
+          headers: { "Authorization": `Bearer ${accessToken}` }
+        });
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async get(id: number) {
+
+    let accessToken = localStorage.getItem("accessToken");
+
+    try {
+      const res = await axios.get(this.baseUrl + '/payment_config/' + id,
+        {
+          headers: { "Authorization": `Bearer ${accessToken}` }
+        });
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+
 
   async save(procurementNatureId: number, procurementMethodId: number, types: any) {
     let accessToken = localStorage.getItem("accessToken");

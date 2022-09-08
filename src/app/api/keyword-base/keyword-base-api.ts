@@ -101,6 +101,21 @@ export class KeyWordBaseApi {
       );
   }
 
+  async getKeywords() {
+    let accessToken = localStorage.getItem("accessToken");
+
+    try {
+      const res = await axios.get(this.baseUrl+'/wise_name',
+        {
+          headers: { "Authorization": `Bearer ${accessToken}` }
+        });
+      console.log(res);
+      return res.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
 
 
 }

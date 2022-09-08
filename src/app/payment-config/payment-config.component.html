@@ -7,7 +7,6 @@
         >
       </h4>
       <br />
-      <br />
       <table class="table table-bordered table-striped">
         <thead class="thead-payment-config">
           <tr>
@@ -58,9 +57,10 @@
               <span style="float: right;" *ngIf="pay.active==false" class="badge badge-danger">No</span>
             </td>
             <td>
-              <a class="btn btn-outline-info btn-sm"
-                ><i class="fa fa-edit"></i
-              ></a>
+              <a
+              class="btn btn-outline-info btn-sm" [routerLink]="['/payment-config/update/', paymentConfig.id]">
+              <i class="fa fa-edit"></i>
+            </a>
             </td>
             <td>
               <a

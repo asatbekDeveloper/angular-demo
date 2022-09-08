@@ -25,6 +25,7 @@ import { ProcurementMethodComponent } from './procurement-method/procurement-met
 // import { ProcurementMethodUpdateComponent } from './procurement-method/components/procurement-method-update/procurement-method-update.component';
 import { PaymentConfigComponent } from './payment-config/payment-config.component';
 import { PaymentConfigCreateComponent } from './payment-config/components/payment-config-create/payment-config-create.component';
+import { PaymentConfigUpdateComponent } from './payment-config/components/payment-config-update/payment-config-update.component';
 
 const routes: Routes = [
   {
@@ -135,6 +136,11 @@ const routes: Routes = [
   {
     path: 'payment-config/create',
     component: PaymentConfigCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'payment-config/update/:paymentConfigId',
+    component: PaymentConfigUpdateComponent,
     canActivate: [AuthGuard]
   },
   {

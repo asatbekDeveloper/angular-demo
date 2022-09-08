@@ -32,7 +32,7 @@ export class EgpCountryUpdateComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private countryApi: CountryApi,
-    private toastService:ToastService) {
+    private toastService: ToastService) {
 
     this.egpCountryUpdateForm = this.fb.group({
       id: '',
@@ -46,11 +46,11 @@ export class EgpCountryUpdateComponent implements OnInit {
 
   getEgpCountry(id: number) {
     this.egpCountryApi.get(this.id)
-    .then(res => {
-      console.log("get: ", res);
-      this.egpCountry.default = res.default;
-      this.getCountryByName(res.countryName);
-    });
+      .then(res => {
+        console.log("get: ", res);
+        this.egpCountry.default = res.default;
+        this.getCountryByName(res.countryName);
+      });
   }
 
   ngOnInit(): void {
@@ -92,7 +92,7 @@ export class EgpCountryUpdateComponent implements OnInit {
           this.router.navigateByUrl("/egp-country");
           this.toastService.show('SuccessFully Updated', {
             classname: 'bg-info text-light',
-            delay: 2000 ,
+            delay: 2000,
             autohide: true
           });
         }).catch(err => {

@@ -1,1 +1,57 @@
-<button  class="btn btn-outline-info btn-sm" ><i class="fa fa-edit"></i></button>
+<div class="container procurement">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <form
+        [formGroup]="paymentConfigUpdateForm"
+        *ngIf="paymentConfigUpdateForm"
+      >
+        <div class="mb-3">
+          <label for="procurementNatureId">Select Procurement Nature</label>
+          <select
+            class="form-control"
+            formControlName="procurementNatureId"
+            id="procurementNatureId"
+            [(ngModel)]="paymentConfig.procurementNatureId"
+          >
+            <option
+              *ngFor="let procurementNature of procurementNatures"
+              [value]="procurementNature.id"
+            >
+              {{ procurementNature.name }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="procurementMethodId">Select Procurement Method</label>
+          <select
+            class="form-control"
+            formControlName="procurementMethodId"
+            id="procurementMethodId"
+            [(ngModel)]="paymentConfig.procurementMethodId"
+          >
+            <option
+              *ngFor="let procurementMethod of procurementMethods"
+              [value]="procurementMethod.id"
+            >
+              {{ procurementMethod.wiseName }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <mat-form-field appearance="fill">
+            <mat-label>Select Payment Types</mat-label>
+            <mat-select  [ngModel]="selectedPaymentTypes"
+            (ngModelChane)="selectedPaymentTypes"  formControlName="types" multiple >
+              <mat-option *ngFor="let pay of paymentTypes" [value]="pay.id" >{{
+                pay.type
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm" (click)="update()">
+          <i class="fa fa-save"></i> Save
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

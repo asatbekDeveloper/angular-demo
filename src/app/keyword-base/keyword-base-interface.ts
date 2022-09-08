@@ -17,3 +17,15 @@ export interface KeywordBaseDTO{
   country:string;
   wiseName:string;
 }
+
+export interface KeywordBase{
+  id:number;
+  genericName:string;
+  countryId:number;
+  wiseName:string;
+}
+
+export interface MenuDTO{
+  genericName:string;
+  wiseName:string;
+}

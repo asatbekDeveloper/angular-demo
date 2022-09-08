@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="authService.isLoggedIn$ | async" style="padding-left:1rem;
-padding-right:1rem">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success" *ngIf="authService.isLoggedIn$ | async" style="padding-left:1rem;
+padding-right:1rem;">
   <a class="navbar-brand" routerLink="/">Angular</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,38 +8,17 @@ padding-right:1rem">
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/">Home</a>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" routerLinkActive="active"
+        [routerLinkActiveOptions]={exact:true}>Home</a>
       </li>
-
-      <li class="nav-item active">
-        <a routerLink="/country" class="nav-link">Country</a>
-      </li>
-      <li class="nav-item active">
-        <a routerLink="/financial-year" class="nav-link">Financial Year</a>
-      </li>
-      <li class="nav-item active">
-        <a routerLink="/procurement-nature" class="nav-link">Procurement-nature</a>
-      </li>
-      <li class="nav-item active">
-        <a routerLink="/payment-type" class="nav-link">Payment Type</a>
-      </li>
-      <li class="nav-item active">
-        <a routerLink="/egp-country" class="nav-link">Egp Country</a>
-      </li>
-      <li class="nav-item active">
-        <a routerLink="/keyword-base" class="nav-link">Keyword Base</a>
-      </li>
-      <li class="nav-item active">
-        <a routerLink="/procurement-method" class="nav-link">Procurement Method</a>
-      </li>
-      <li class="nav-item active">
-        <a routerLink="/payment-config" class="nav-link">Payment Config</a>
+      <li class="nav-item" *ngFor="let menu of menues">
+        <a [routerLink]="['/', menu.genericName]" class="nav-link" routerLinkActive="active">{{menu.wiseName}}</a>
       </li>
     </ul>
 
     <div class="form-inline my-2 my-lg-0">
-      <button (click)="logout()" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+      <button (click)="logout()" class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
     </div>
 
   </div>

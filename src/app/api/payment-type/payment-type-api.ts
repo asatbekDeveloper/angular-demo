@@ -8,6 +8,8 @@ import { Injectable } from "@angular/core";
 export class PaymentTypeApi {
 
   baseUrl: string = "http://localhost:9595/v1/payment/payment_type";
+id: any;
+type: any;
 
 
   constructor() {
