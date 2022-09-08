@@ -18,7 +18,7 @@
               class="th-payment-config"
               *ngFor="let payment of paymentTypes; let i = index"
             >
-              Payment Type
+              {{payment.type}}
             </th>
             <th scope="col" colspan="2" class="th-payment-config">Settings</th>
           </tr>
@@ -52,9 +52,8 @@
             <td>{{ paymentConfig.procurementMethodName }}</td>
             <td>{{ paymentConfig.procurementNatureName }}</td>
             <td *ngFor="let pay of paymentConfig.payments">
-              {{ pay.paymentType }}
-              <span style="float: right;" *ngIf="pay.active==true" class="badge badge-success">Yes</span>
-              <span style="float: right;" *ngIf="pay.active==false" class="badge badge-danger">No</span>
+              <span  *ngIf="pay.active==true" class="badge badge-success">Yes</span>
+              <span  *ngIf="pay.active==false" class="badge badge-danger">No</span>
             </td>
             <td>
               <a

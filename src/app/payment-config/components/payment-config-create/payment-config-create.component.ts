@@ -10,6 +10,7 @@ import { ProcurementMethodDTO } from 'src/app/procurement-method/procurement-met
 import { ProcurementNature } from 'src/app/procurement-nature/procurement-nature-interface';
 import { ToastService } from 'src/app/_services/toast.service';
 import { PaymentConfigApi, TypesDTO } from 'src/app/api/payment-config/payment-config-api';
+import { PaymentConfigComponent } from '../../payment-config.component';
 
 
 @Component({
@@ -34,7 +35,7 @@ export class PaymentConfigCreateComponent implements OnInit {
     private router: Router,
     private paymentTypeApi: PaymentTypeApi,
     private paymentConfigApi: PaymentConfigApi,
-    private procurementMethodApi: ProcurementMethodApi) {
+    private procurementMethodApi: ProcurementMethodApi, private paymentConfigCom: PaymentConfigComponent) {
 
     this.paymentConfigCreateForm = this.fb.group({
       procurementNatureId: ['', Validators.required],
@@ -58,43 +59,47 @@ export class PaymentConfigCreateComponent implements OnInit {
     const val = this.paymentConfigCreateForm.value;
     const selectedTypes = val.types;
 
-    for (let i = 0; i < selectedTypes.length; i++) {
-      this.types.push({
-        paymentTypeId: selectedTypes[i],
-        active: true,
-        paymentConfigurationId: 0
-      });
-    }
+    if (val.procurementNatureId && val.procurementMethodId) {
 
-
-    for (let j = 0; j < this.paymentTypes.length; j++) {
-      let found = false;
       for (let i = 0; i < selectedTypes.length; i++) {
-        if (this.paymentTypes[j].id === selectedTypes[i]) {
-          found = true;
-        }
-      }
-      if (found === false) {
         this.types.push({
-          paymentTypeId: this.paymentTypes[j].id,
-          active: false,
+          paymentTypeId: selectedTypes[i],
+          active: true,
           paymentConfigurationId: 0
         });
       }
-    }
 
-    this.paymentConfigApi.save(val.procurementNatureId, val.procurementMethodId, this.types)
-      .then(res => {
-        console.log("response: ", res);
-        this.router.navigateByUrl("/payment-config");
-        this.toastService.show('SuccessFully Created', {
-          classname: 'bg-success text-light',
-          delay: 2000,
-          autohide: true
-        });
-      }).catch(err => {
-        console.log(err);
-      })
+
+      for (let j = 0; j < this.paymentTypes.length; j++) {
+        let found = false;
+        for (let i = 0; i < selectedTypes.length; i++) {
+          if (this.paymentTypes[j].id === selectedTypes[i]) {
+            found = true;
+          }
+        }
+        if (found === false) {
+          this.types.push({
+            paymentTypeId: this.paymentTypes[j].id,
+            active: false,
+            paymentConfigurationId: 0
+          });
+        }
+      }
+
+      this.paymentConfigApi.save(val.procurementNatureId, val.procurementMethodId, this.types)
+        .then(res => {
+          console.log("response: ", res);
+          this.router.navigateByUrl("/payment-config");
+          this.paymentConfigCom.getAllPaymentConfig();
+          this.toastService.show('SuccessFully Created', {
+            classname: 'bg-success text-light',
+            delay: 2000,
+            autohide: true
+          });
+        }).catch(err => {
+          console.log(err);
+        })
+    }
 
   }
 

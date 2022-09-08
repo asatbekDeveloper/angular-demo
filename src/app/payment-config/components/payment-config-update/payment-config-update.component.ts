@@ -11,6 +11,7 @@ import { PaymentType } from 'src/app/payment-type/payment-type-interface';
 import { ProcurementMethodDTO } from 'src/app/procurement-method/procurement-method-interface';
 import { ProcurementNature } from 'src/app/procurement-nature/procurement-nature-interface';
 import { ToastService } from 'src/app/_services/toast.service';
+import { PaymentConfigComponent } from '../../payment-config.component';
 
 
 @Component({
@@ -22,11 +23,12 @@ export class PaymentConfigUpdateComponent implements OnInit {
 
 
   id: number;
+  isSelected = false;
 
   procurementMethods: ProcurementMethodDTO[] = [];
   procurementNatures: ProcurementNature[] = [];
   paymentTypes: PaymentType[] = [];
-  selectedPaymentTypes: PaymentType[] = [];
+  selectedPaymentTypes: number[] = [];
   paymentConfig: PaymentConfig = {
     id: 0,
     procurementNatureId: 0,
@@ -34,6 +36,7 @@ export class PaymentConfigUpdateComponent implements OnInit {
   };
 
   paymentConfigUpdateForm: FormGroup;
+  types: TypesDTO[] = [];
 
 
   constructor(private fb: FormBuilder,
@@ -44,7 +47,8 @@ export class PaymentConfigUpdateComponent implements OnInit {
     private router: Router,
     private paymentTypeApi: PaymentTypeApi,
     private paymentConfigApi: PaymentConfigApi,
-    private procurementMethodApi: ProcurementMethodApi) {
+    private procurementMethodApi: ProcurementMethodApi,
+    private paymentConfigCom: PaymentConfigComponent) {
 
     this.id = this.route.snapshot.params['paymentConfigId'];
 
@@ -67,6 +71,51 @@ export class PaymentConfigUpdateComponent implements OnInit {
   update() {
 
     console.log("values: ", this.paymentConfigUpdateForm.value);
+    const val = this.paymentConfigUpdateForm.value;
+    const selectedTypes = val.types;
+    if (val.procurementNatureId && val.procurementMethodId) {
+      for (let i = 0; i < selectedTypes.length; i++) {
+        this.types.push({
+          paymentTypeId: selectedTypes[i],
+          active: true,
+          paymentConfigurationId: this.id
+        });
+      }
+
+
+      for (let j = 0; j < this.paymentTypes.length; j++) {
+        let found = false;
+        for (let i = 0; i < selectedTypes.length; i++) {
+          if (this.paymentTypes[j].id === selectedTypes[i]) {
+            found = true;
+          }
+        }
+        if (found === false) {
+          this.types.push({
+            paymentTypeId: this.paymentTypes[j].id,
+            active: false,
+            paymentConfigurationId: this.id
+          });
+        }
+      }
+
+      console.log(this.id, val.procurementNatureId, val.procurementMethodId, this.types);
+
+      this.paymentConfigApi.update(this.id, val.procurementNatureId, val.procurementMethodId, this.types)
+        .then(res => {
+          console.log("response: ", res);
+          this.router.navigateByUrl("/payment-config");
+          this.paymentConfigCom.getAllPaymentConfig();
+          this.toastService.show('SuccessFully Updated', {
+            classname: 'bg-info text-light',
+            delay: 2000,
+            autohide: true
+          });
+        }).catch(err => {
+          console.log(err);
+        })
+    }
+
   }
 
 
@@ -120,16 +169,14 @@ export class PaymentConfigUpdateComponent implements OnInit {
 
           for (let i = 0; i < res.payments.length; i++) {
             if (res.payments[i].active === true && res.payments[i].paymentType === this.paymentTypes[j].type) {
-              this.selectedPaymentTypes.push({
-                id: this.paymentTypes[j].id,
-                type: this.paymentTypes[j].type
-              });
+              this.selectedPaymentTypes.push(this.paymentTypes[j].id);
             }
           }
         }
         console.log("selectedPaymentTypes: ", this.selectedPaymentTypes);
+        this.isSelected = true;
       }).catch(err => {
         console.log(err);
-      })
+      });
   }
 }

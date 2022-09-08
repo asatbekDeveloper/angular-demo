@@ -118,6 +118,24 @@ export class PaymentConfigApi {
       );
   }
 
+  async update(id: number, procurementNatureId: number, procurementMethodId: number, types: any) {
+    let accessToken = localStorage.getItem("accessToken");
+    console.log(procurementNatureId, procurementMethodId, types);
+
+    await axios.put(this.baseUrl,
+      { id, procurementNatureId, procurementMethodId, types },
+      {
+        headers: { "Authorization": `Bearer ${accessToken}` },
+      })
+      .then(res => {
+        console.log(res);
+        return res.data;
+      }).catch(err => {
+        console.log(err);
+      }
+      );
+  }
+
 
   async delete(id: number) {
 

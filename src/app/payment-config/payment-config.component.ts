@@ -1,10 +1,12 @@
-import { Component, ElementRef, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
+import { Component, ElementRef, Injectable, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
 import { PaymentConfigApi } from '../api/payment-config/payment-config-api';
 import { PaymentTypeApi } from '../api/payment-type/payment-type-api';
 import { PaymentType } from '../payment-type/payment-type-interface';
 import { PaymentConfigDTO } from '../api/payment-config/payment-config-api';
 import { ToastService } from '../_services/toast.service';
-
+@Injectable({
+  providedIn: "root"
+})
 @Component({
   selector: 'app-payment-config',
   templateUrl: './payment-config.component.html',
@@ -33,12 +35,12 @@ export class PaymentConfigComponent implements OnInit {
         this.paymentConfigs = res;
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 500);
         console.log("paymentConfigs: ", this.paymentConfigs);
       }).catch(err => {
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 500);
         console.log(err);
       })
   }
