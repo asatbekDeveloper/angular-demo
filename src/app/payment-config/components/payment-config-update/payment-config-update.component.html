@@ -37,17 +37,7 @@
             </option>
           </select>
         </div>
-        <div class="mb-3">
-          <mat-form-field appearance="fill">
-            <mat-label>Select Payment Types</mat-label>
-            <mat-select  [ngModel]="selectedPaymentTypes"
-            (ngModelChane)="selectedPaymentTypes"  formControlName="types" multiple >
-              <mat-option *ngFor="let pay of paymentTypes" [value]="pay.id" >{{
-                pay.type
-              }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
+        <div class="mb-3"></div>
         <button type="submit" class="btn btn-primary btn-sm" (click)="update()">
           <i class="fa fa-save"></i> Save
         </button>

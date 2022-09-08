@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   constructor(private fb: FormBuilder,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
@@ -35,9 +35,8 @@ export class LoginComponent implements OnInit {
       console.log("Username: ", val.username, " Password: ", val.password);
       this.authService.login(val.username, val.password)
         .then(res => {
-          console.log("response: ",res.body);
-          // this.router.navigateByUrl('/');
-          this.router.navigate(['/']);
+          console.log("response: ", res.body);
+          this.router.navigate(['/home']);
         }).catch(err => {
           console.log(err);
           this.router.navigateByUrl('/login');

@@ -28,12 +28,15 @@ export class NavbarComponent implements OnInit {
     private keywordBaseApi: KeyWordBaseApi) { }
 
   ngOnInit(): void {
-    this.getMenuList();
+    let accessToken = localStorage.getItem("accessToken");
+    if (accessToken != null) {
+      this.getMenuList();
+    }
   }
 
   logout() {
     this.authService.logout();
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login']);
   }
 
   getMenuList() {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subscription } from 'rxjs';
 import { PaymentConfig, PaymentConfigApi, PaymentConfigDTO, TypesDTO } from 'src/app/api/payment-config/payment-config-api';
 import { PaymentTypeApi } from 'src/app/api/payment-type/payment-type-api';
 import { ProcurementMethodApi } from 'src/app/api/procurement-method/procurement-method-api';
@@ -25,7 +26,7 @@ export class PaymentConfigUpdateComponent implements OnInit {
   procurementMethods: ProcurementMethodDTO[] = [];
   procurementNatures: ProcurementNature[] = [];
   paymentTypes: PaymentType[] = [];
-  selectedPaymentTypes: number[] = [];
+  selectedPaymentTypes: PaymentType[] = [];
   paymentConfig: PaymentConfig = {
     id: 0,
     procurementNatureId: 0,
@@ -67,6 +68,7 @@ export class PaymentConfigUpdateComponent implements OnInit {
 
     console.log("values: ", this.paymentConfigUpdateForm.value);
   }
+
 
   getAllProcurementNature() {
     this.procurementNatureApi.getAll()
@@ -117,8 +119,11 @@ export class PaymentConfigUpdateComponent implements OnInit {
         for (let j = 0; j < this.paymentTypes.length; j++) {
 
           for (let i = 0; i < res.payments.length; i++) {
-            if (res.payments[i].active === true && res.payments[i].paymentType===this.paymentTypes[j].type) {
-              this.selectedPaymentTypes.push(this.paymentTypes[j].id);
+            if (res.payments[i].active === true && res.payments[i].paymentType === this.paymentTypes[j].type) {
+              this.selectedPaymentTypes.push({
+                id: this.paymentTypes[j].id,
+                type: this.paymentTypes[j].type
+              });
             }
           }
         }

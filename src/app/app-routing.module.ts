@@ -34,6 +34,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'home',
+    redirectTo: '/',
+    pathMatch: 'full'
+  },
+  {
     path: 'country',
     component: CountryComponent,
     canActivate: [AuthGuard]
