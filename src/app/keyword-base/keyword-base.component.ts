@@ -45,12 +45,12 @@ export class KeywordBaseComponent implements OnInit {
         this.keywordBases = res;
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 200);
         console.log("keywordBases: ", this.keywordBases);
       }).catch(err => {
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 200);
         console.log(err);
       });
   }

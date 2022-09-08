@@ -46,12 +46,12 @@ export class EgpCountryComponent implements OnInit {
         this.egpCountries = res;
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 50);
         console.log("egpCountries: ", this.egpCountries);
       }).catch(err => {
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 50);
         console.log(err);
       });
   }

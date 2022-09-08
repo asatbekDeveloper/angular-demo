@@ -49,12 +49,12 @@ export class FinancialYearComponent implements OnInit {
         this.financialYears = res;
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 200);
         console.log("financialYears: ", this.financialYears);
       }).catch(err => {
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 200);
         console.log(err);
       });
   }

@@ -48,12 +48,12 @@ export class ProcurementMethodComponent implements OnInit {
         this.procurementMethods = res;
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 50);
         console.log("procurementMethods: ", this.procurementMethods);
       }).catch(err => {
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 50);
         console.log(err);
       });
   }

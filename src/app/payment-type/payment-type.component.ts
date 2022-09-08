@@ -49,12 +49,12 @@ export class PaymentTypeComponent implements OnInit {
         this.paymentTypes = res;
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 200);
         console.log("paymentTypes: ", this.paymentTypes);
       }).catch(err => {
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 200);
         console.log(err);
       });
   }

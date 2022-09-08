@@ -30,13 +30,13 @@ export class CountryComponent implements OnInit {
         this.countries = res;
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 200);
 
       }).catch(err => {
         console.log(err);
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 200);
       });
   }
 

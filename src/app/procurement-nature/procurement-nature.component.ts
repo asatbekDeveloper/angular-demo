@@ -51,12 +51,12 @@ export class ProcurementNatureComponent implements OnInit {
         this.procurementNatures = res;
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 200);
         console.log("procurementNatures: ", this.procurementNatures);
       }).catch(err => {
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 200);
         console.log(err);
       });
   }

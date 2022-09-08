@@ -35,12 +35,12 @@ export class PaymentConfigComponent implements OnInit {
         this.paymentConfigs = res;
         setTimeout(() => {
           this.isLoading = false;
-        }, 500);
+        }, 50);
         console.log("paymentConfigs: ", this.paymentConfigs);
       }).catch(err => {
         setTimeout(() => {
           this.isLoading = false;
-        }, 500);
+        }, 50);
         console.log(err);
       })
   }
