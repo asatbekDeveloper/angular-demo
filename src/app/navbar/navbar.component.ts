@@ -1,8 +1,9 @@
 import { KeyWordBaseApi } from 'src/app/api/keyword-base/keyword-base-api';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../api/auth/auth-service-api';
 import { KeywordBase, MenuDTO } from '../keyword-base/keyword-base-interface';
+
 
 
 @Component({
