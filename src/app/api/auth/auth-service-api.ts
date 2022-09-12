@@ -23,7 +23,9 @@ export class AuthService {
     return axios.post('http://localhost:9595/login', { username, password })
       .then(res => {
         console.log(res);
-        this.setSession(res.data.body);
+        if (res.data.body != null) {
+          this.setSession(res.data.body);
+        }
         return res.data;
       }).catch(err => {
         console.log(err);
