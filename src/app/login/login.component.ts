@@ -39,11 +39,12 @@ export class LoginComponent implements OnInit {
           console.log("res: ", res);
           if (res.body != null) {
             console.log("response: ", res.body);
-            this.router.navigate(['home'])
+            this.router.navigate(['/home'])
             .then(() => {
               window.location.reload();
             });
-              
+            console.log("Added");
+
           } else {
             console.log("response: ", res.error);
             this.router.navigate(['/login']);
