@@ -36,6 +36,9 @@ import { PaymentConfigComponent } from './payment-config/payment-config.componen
 import { PaymentConfigCreateComponent } from './payment-config/components/payment-config-create/payment-config-create.component';
 import { PaymentConfigUpdateComponent } from './payment-config/components/payment-config-update/payment-config-update.component';
 import { SafeHtmlPipe } from './payment-config/safe-html.pipe';
+import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
 
 @NgModule({
   declarations: [
@@ -78,7 +81,10 @@ import { SafeHtmlPipe } from './payment-config/safe-html.pipe';
     MatSelectModule,
     MatProgressSpinnerModule,
     NgbModule,
-    NgbPaginationModule, NgbAlertModule
+    NgbPaginationModule, NgbAlertModule,
+    AccordionModule,
+    ButtonModule,
+    RippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

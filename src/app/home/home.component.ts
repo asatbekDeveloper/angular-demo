@@ -12,8 +12,7 @@ export class HomeComponent implements OnInit {
     public toastService: ToastService
   ) {}
 
-  ngOnInit(): void {
-  }
-
+    ngOnInit() {
+    }
 
 }
