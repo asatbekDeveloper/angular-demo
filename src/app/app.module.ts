@@ -39,6 +39,8 @@ import { SafeHtmlPipe } from './payment-config/safe-html.pipe';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
+import {MenubarModule} from 'primeng/menubar';
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -84,7 +86,9 @@ import { RippleModule } from 'primeng/ripple';
     NgbPaginationModule, NgbAlertModule,
     AccordionModule,
     ButtonModule,
-    RippleModule
+    RippleModule,
+    MenubarModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -47,12 +47,12 @@ export class EgpCountryApi {
   }
 
 
-  async save(countryId:number,isDefault:boolean) {
+  async save(countryId: number, isDefault: boolean) {
 
     let accessToken = localStorage.getItem("accessToken");
 
     await axios.post(this.baseUrl,
-      { countryId:countryId,default:isDefault },
+      { countryId: countryId, default: isDefault },
       {
         headers: { "Authorization": `Bearer ${accessToken}` },
       })
@@ -66,12 +66,12 @@ export class EgpCountryApi {
   }
 
 
-  async update(id: number, countryId:number,isDefault:boolean) {
+  async update(id: number, countryId: number, isDefault: boolean) {
 
     let accessToken = localStorage.getItem("accessToken");
 
     await axios.put(this.baseUrl,
-      { id:id,countryId:countryId,default:isDefault },
+      { id: id, countryId: countryId, default: isDefault },
       {
         headers: { "Authorization": `Bearer ${accessToken}` },
       })
@@ -102,6 +102,21 @@ export class EgpCountryApi {
       );
   }
 
+
+  async getDefaultCountryId() {
+    let accessToken = localStorage.getItem("accessToken");
+
+    return axios.get(this.baseUrl + '/default_country_id',
+      {
+        headers: { "Authorization": `Bearer ${accessToken}` },
+      })
+      .then(res => {
+        return res.data;
+      }).catch(err => {
+        console.log(err);
+      }
+      );
+  }
 
 
 }

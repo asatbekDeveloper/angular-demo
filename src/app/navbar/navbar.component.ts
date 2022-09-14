@@ -1,8 +1,11 @@
+import { EgpCountryApi } from 'src/app/api/egp-country/egp-country-api';
+import { MenuBaseApi, DataDTO } from './../api/menu/menu-api';
 import { KeyWordBaseApi } from 'src/app/api/keyword-base/keyword-base-api';
 import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../api/auth/auth-service-api';
 import { KeywordBase, MenuDTO } from '../keyword-base/keyword-base-interface';
+import { MenuItem } from 'primeng/api';
 
 
 
@@ -19,19 +22,34 @@ export class NavbarComponent implements OnInit {
     'procurement-method', 'payment-config'
   ];
 
-  keywordMenuList: KeywordBase[] = [];
 
-  menues: MenuDTO[] = [];
+  items: MenuItem[] = [];
+
+  isMenuLoaded = false;
+  defaultCountryId: number = 0;
 
   constructor(
     public authService: AuthService,
     private router: Router,
-    private keywordBaseApi: KeyWordBaseApi) { }
+    private keywordBaseApi: KeyWordBaseApi,
+    private menuApi: MenuBaseApi,
+    private egpCountryApi: EgpCountryApi) {
+
+  }
 
   ngOnInit(): void {
     let accessToken = localStorage.getItem("accessToken");
     if (accessToken != null) {
-      this.getMenuList();
+      this.egpCountryApi.getDefaultCountryId()
+        .then(res => {
+          if (res != 0) {
+            this.defaultCountryId = res;
+            this.getMainMenues();
+          }
+        }).catch(err => {
+          console.log(err);
+        })
+
     }
   }
 
@@ -41,43 +59,59 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  getMenuList() {
-    this.keywordBaseApi.getKeywords()
+
+  getMainMenues() {
+    this.menuApi.getMainMenues(this.defaultCountryId)
       .then(res => {
-        this.keywordMenuList = res;
-        console.log("response: ", this.keywordMenuList);
-        this.getMenues();
+        for (let i = 0; i < res.length; i++) {
+            this.items.push({
+              label: res[i].dataDTO.wiseName,
+              items: this.getSubMenues(res[i].dataDTO.id)
+            });
+        }
+        this.isMenuLoaded = true;
       }).catch(err => {
-        console.log(err);
+        console.log("err: ", err);
       })
   }
 
-  getMenues() {
-    for (let i = 0; i < this.menuList.length; i++) {
+  getSubMenues(parentId: number):MenuItem[] {
+    let items: MenuItem[] = [];
+    this.menuApi.getSubMenues(parentId, this.defaultCountryId)
+      .then(res => {
+        if (res[0].statusCode!= 404) {
+          for (let i = 0; i < this.menuList.length; i++) {
 
-      let found = false;
+            let found = false;
 
-      for (let j = 0; j < this.keywordMenuList.length; j++) {
+            for (let j = 0; j < res.length; j++) {
 
-        if (this.keywordMenuList[j].genericName === this.menuList[i]) {
-          found = true;
-          this.menues.push({
-            genericName: this.keywordMenuList[j].genericName,
-            wiseName: this.keywordMenuList[j].wiseName
-          });
-          break;
+              if (res[j].dataDTO.genericName === this.menuList[i]) {
+                found = true;
+                items.push({
+                  routerLink: '/' + res[j].dataDTO.genericName,
+                  label: res[j].dataDTO.wiseName,
+                  routerLinkActiveOptions: { exact: true }
+                });
+                break;
+              }
+
+            }
+
+            if (found === false) {
+              items.push({
+                routerLink: '/' + this.menuList[i],
+                label: "Default " + this.menuList[i],
+                routerLinkActiveOptions: { exact: true }
+              });
+            }
+          }
         }
 
-      }
-
-      if (found === false) {
-        this.menues.push({
-          genericName: this.menuList[i],
-          wiseName: "Default " + this.menuList[i]
-        });
-      }
-    }
+      }).catch(err => {
+        console.log(err);
+      })
+    return items;
   }
-
 
 }

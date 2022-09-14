@@ -14,6 +14,12 @@ export class FinancialYearComponent implements OnInit {
   financialYears: FinancialYear[] = [];
   isLoading = true;
 
+  cols = [
+    { field: 'id', header: 'Id' },
+    { field: 'year', header: 'Name' },
+    { field: 'default', header: 'Is Default' }
+];
+
   constructor(private financialYearApi: FinancialYearApi,
     private router: Router,private toastService:ToastService) {
 
